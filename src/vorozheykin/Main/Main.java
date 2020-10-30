@@ -1,8 +1,5 @@
 package vorozheykin.Main;
 
-import vorozheykin.Geometry.Point;
-import vorozheykin.Geometry.PolygonalChain;
-
 public class Main {
 
     public static void main(String[] args) {
@@ -10,6 +7,7 @@ public class Main {
         PolygonalChain a = new PolygonalChain(new Point(2, 3), new Point(4, 5));
         PolygonalChain b = new PolygonalChain(new Point(2,3), null);
 
+        Point a = new Point(2,3 ,4);
         PolygonalChain c = null;
         PolygonalChain d = null;
 

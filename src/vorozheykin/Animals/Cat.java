@@ -1,4 +1,5 @@
 package vorozheykin.Animals;
+import vorozheykin.Animals.Meowable;
 
 public class Cat implements Meowable {
     private String name;

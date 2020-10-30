@@ -1,11 +1,7 @@
 package vorozheykin.Main;
 
-import vorozheykin.Animals.Bird;
-import vorozheykin.Animals.Meowable;
-import vorozheykin.Geometry.Figure;
-import vorozheykin.Geometry.Lengthable;
-import vorozheykin.Geometry.PolygonalChain;
-import vorozheykin.Geometry.PolygonalChainable;
+import vorozheykin.Geometry.*;
+import vorozheykin.Animals.*;
 
 public class StaticMethods {
     public static void meow(Meowable...cats){
