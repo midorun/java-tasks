@@ -7,7 +7,7 @@ public class Employee{
     public Employee(String name, Department department){
         if(name == null || name.equals("")) throw new IllegalArgumentException("Заданы неверные аргументы в конструкторе работника");
         this.name = name;
-        setDepartment(department);
+        changeDepartment(department);
     }
 
     public String getName() {
@@ -22,13 +22,14 @@ public class Employee{
         return department;
     }
 
-    public void setDepartment(Department department) {
-       if(this.department != department){
-           if(this.department.chief == this){
-               this.department.chief = null;
-           }
-           this.department = department;
-       }
+    public void changeDepartment(Department department){
+        if(this.department != department){
+            if(this.department.chief == this){
+                throw new IllegalArgumentException("Нельзя оставлять отдел без начальника");
+            }
+
+            this.department = department;
+        }
     }
 
     public void fire(){
@@ -36,13 +37,6 @@ public class Employee{
     }
 
     public void toEmploy(Department department){
-        this.department = department;
-    }
-
-    public void changeDepartment(Department department){
-        if(this.department.chief == this){
-            this.department.chief = null;
-        }
         this.department = department;
     }
 

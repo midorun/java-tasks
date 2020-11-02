@@ -21,8 +21,8 @@ public class Main {
 
 
         System.out.println(a.getDepartment());
-        b.setDepartment(IT);
-        System.out.println(b);
+        b.changeDepartment(IT);
+        System.out.println(Law);
         System.out.println(IT);
 
 
