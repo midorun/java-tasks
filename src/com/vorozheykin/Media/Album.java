@@ -5,49 +5,46 @@ import java.util.Arrays;
 import java.util.List;
 
 public class Album {
-    private String title;
-    private List<String> authors = new ArrayList<>();
-    private List<Song> tracks = new ArrayList<>();
+    final String title;
+    List<String> authors = new ArrayList<>();
+    List<Song> songs = new ArrayList<>();
 
-    public Album(String title, Song...tracks){
+    public Album(String title, String author){
         this.title = title;
-        this.tracks.addAll(Arrays.asList(tracks));
+        setAuthors(authors);
     }
 
-    public String getName() {
+    public String getTitle() {
         return title;
     }
 
-    public Album setName(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public List<String> getAuthor() {
+    public List<String> getAuthors(){
         return authors;
     }
 
-    public Album setAuthor(String author) {
-        this.authors.add(author);
+    public Album setAuthors(List<String> authors){
+        this.authors.addAll(authors);
         return this;
     }
 
-    public List<Song> getTracks() {
-        return tracks;
-    }
-
-    public Album addTracks(Song...tracks) {
-        this.tracks.addAll(Arrays.asList(tracks));
+    public Album setAuthors(String...authors){
+        setAuthors(Arrays.asList(authors));
         return this;
     }
 
-    public String toString(){
-        String tracksStr = "";
-
-        for(int i = 0; i < tracks.size(); i++) {
-            tracksStr += tracks.get(i);
-        }
-        return "Album: " + title + "\n\t" + tracksStr;
-
+    public List<Song> getSongs() {
+        return songs;
     }
+
+    public Album setSongs(List<Song> songs) {
+        this.songs.addAll(songs);
+        return this;
+    }
+
+    public Album setSongs(Song... songs){
+        setSongs(Arrays.asList(songs));
+        return this;
+    }
+
+
 }

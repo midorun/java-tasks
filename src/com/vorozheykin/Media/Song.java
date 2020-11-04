@@ -1,35 +1,50 @@
 package com.vorozheykin.Media;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Song {
-    private String title;
-    private List<String> authors = new ArrayList<>();
-    private Album album;
-    private boolean hasAlbum = false;
+    final String title;
+    List<String> authors = new ArrayList<>();
+    Album album;
+
 
     public Song(String title, Album album, String...authors) {
         this.title = title;
         this.album = album;
-        setAuthors();
-        hasAlbum = true;
+        setAuthors(authors);
     }
 
-    public Song(String title, String...authors){
-        this(title, null, authors);
+    public Song(String title, String author){
+        this(title,null, author);
+    }
+
+    public Song(String title){
+        this(title, null, "Без автора");
+    }
+
+    public String getTitle(){
+        return title;
+    }
+
+    public List<String> getAuthor(){
+        return authors;
+    }
+
+    public Song setAuthors(List<String> authors){
+        this.authors.addAll(authors);
+        return this;
     }
 
     public Song setAuthors(String...authors){
-        for(String author: authors) if(author != null) this.authors.add(author);
+        setAuthors(Arrays.asList(authors));
         return this;
     }
 
     public Song setAlbum(Album album) {
-        if(hasAlbum) throw new IllegalArgumentException("This song already has album");
-        hasAlbum = true;
+        if(!album.getSongs().contains(this)) album.setSongs(this);
         this.album = album;
-        if(!album.getTracks().contains(this)) album.addTracks();
         return this;
     }
 
@@ -37,12 +52,8 @@ public class Song {
         return album;
     }
 
-    public List<String> getAuthors() {
-        return authors;
-    }
-
     @Override
     public String toString(){
-        return title +", authors: " + authors;
+        return title +" - authors: " + authors;
     }
 }

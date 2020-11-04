@@ -1,7 +1,7 @@
 package com.vorozheykin.Military;
 
 public abstract class Weapon {
-    private int ammo;
+    protected int ammo;
 
     public Weapon(int ammo) {
         if(ammo < 0) throw new RuntimeException("Ammo can't be less than 0");

@@ -3,7 +3,7 @@ package com.vorozheykin.Geometry;
 
 import java.util.Objects;
 
-public class Line implements Lengthable {
+public class Line implements Lengthable, Cloneable {
     private Point start;
     private Point end;
 
@@ -39,10 +39,13 @@ public class Line implements Lengthable {
          return (double)Math.sqrt(x * x + y * y);
     }
 
-    @Override
-    public String toString() {
-            return "Line from " + start.toString() + " to " + end.toString();
-    }
+   @Override
+   public Line clone() throws CloneNotSupportedException{
+       Line clone = (Line) super.clone();
+       clone.end = this.end.clone();
+       clone.start = this.start.clone();
+       return clone;
+   }
 
     @Override
     public boolean equals(Object o) {
@@ -57,4 +60,10 @@ public class Line implements Lengthable {
     public int hashCode() {
         return Objects.hash(start, end);
     }
+
+    @Override
+    public String toString() {
+        return "Line from " + start.toString() + " to " + end.toString();
+    }
 }
+

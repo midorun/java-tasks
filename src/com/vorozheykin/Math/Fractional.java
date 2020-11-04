@@ -2,7 +2,7 @@ package com.vorozheykin.Math;
 
 import java.util.Objects;
 
-public final class Fractional extends Number {
+public final class Fractional extends Number implements Cloneable{
     int numerator;
     int denumerator;
 
@@ -124,5 +124,10 @@ public final class Fractional extends Number {
     @Override
     public int hashCode() {
         return Objects.hash(numerator, denumerator);
+    }
+
+    @Override
+    public Fractional clone() throws CloneNotSupportedException {
+        return (Fractional) super.clone();
     }
 }

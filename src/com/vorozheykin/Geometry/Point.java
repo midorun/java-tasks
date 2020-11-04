@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Point {
-    private final List<Integer> coordinates = new ArrayList<>();
+public class Point implements Cloneable {
+    private List<Integer> coordinates = new ArrayList<>();
 
     public Point(int x) {
         coordinates.add(x);
@@ -52,6 +52,13 @@ public class Point {
 
     public List<Integer> getCoordinates() {
         return coordinates;
+    }
+
+    @Override
+    public Point clone() throws CloneNotSupportedException{
+        Point clone = (Point) super.clone();
+        clone.coordinates = new ArrayList<>(this.coordinates);
+        return clone;
     }
 
     @Override
