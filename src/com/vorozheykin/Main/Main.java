@@ -1,17 +1,35 @@
 package com.vorozheykin.Main;
 
 
-import com.vorozheykin.Geometry.Point;
+import com.vorozheykin.Media.MultiComment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) {
 
-        Point p = new Point(3,4,5);
-        Point p1 = p.clone();
+        List<MultiComment> b = new ArrayList<>();
+        b.add(new MultiComment(0, "fsdfsdf"));
+        b.add(new MultiComment(1, "fsdfsdf"));
+        b.add(new MultiComment(2, "fsdfsdf"));
+        b.add(new MultiComment(3, "fsdfsdf"));
 
-        p1.setX(2);
-        System.out.println(p);
-        System.out.println(p1);
+        MultiComment a = new MultiComment(0,"innerContent",
+                new MultiComment(1, "firstCont"),
+                new MultiComment(2, "secondCont"),
+                new MultiComment(1, "firstCont"),
+                new MultiComment(2, "secondCont"),
+                new MultiComment(1, "firstCont"),
+                new MultiComment(2, "secondCont"),
+                new MultiComment(1, "firstCont"),
+                new MultiComment(2, "secondCont")
+        );
+        MultiComment c = new MultiComment(1,"gdfgdfg", b);
+
+
+        System.out.println(a.toString(3));
+        System.out.println("a".repeat(3));
     }
 }
