@@ -7,9 +7,11 @@ import com.vorozheykin.Geometry.Lengthable;
 import com.vorozheykin.Geometry.PolygonalChain;
 import com.vorozheykin.Geometry.PolygonalChainable;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
-public class StaticMethods {
+public class StaticMethods implements Cloneable{
     public static void meow(Meowable...cats){
         for(Meowable cat: cats){
             cat.meow();
@@ -62,7 +64,17 @@ public class StaticMethods {
             }else{
                 System.out.println(object.toString());
             }
-
         }
     }
+
+    public static List<Object> totalClone(MyClone...objects) throws CloneNotSupportedException {
+        List<Object> copies = new ArrayList<>();
+        for(MyClone object: objects){
+
+            copies.add(object.clone());
+        }
+        return copies;
+    }
+
+
 }

@@ -3,11 +3,12 @@ package com.vorozheykin.Geometry;
 import java.util.List;
 
 public class ClosedLine extends PolygonalChain {
-    public ClosedLine(Point...Point){
+    @SafeVarargs
+    public ClosedLine(Point<Double>...Point){
         super(Point);
     }
 
-    public ClosedLine(List<Point> points){
+    public ClosedLine(List<Point<Double>> points){
         super(points);
     }
 

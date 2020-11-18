@@ -1,11 +1,11 @@
 package com.vorozheykin.Geometry;
 
 public class Circle implements Figure {
-    private Point center;
+    private Point<Double> center;
     private int radius;
 
 
-    public Circle(Point center, int radius) {
+    public Circle(Point<Double> center, int radius) {
         setCenter(center);
         setRadius(radius);
     }
@@ -14,10 +14,10 @@ public class Circle implements Figure {
         return center;
     }
 
-    public Circle setCenter(Point center) {
-        if(center.getCoordinates().size() == 1) this.center = new Point(center.getX());
-        if(center.getCoordinates().size() == 2) this.center = new Point(center.getX(), center.getY());
-        if(center.getCoordinates().size() == 3) this.center = new Point(center.getX(), center.getY(), center.getZ());
+    public Circle setCenter(Point<Double> center) {
+        if(center.getCoordinates().size() == 1) this.center = new Point<>(center.getX());
+        if(center.getCoordinates().size() == 2) this.center = new Point<>(center.getX(), center.getY());
+        if(center.getCoordinates().size() == 3) this.center = new Point<>(center.getX(), center.getY(), center.getZ());
         return this;
     }
 

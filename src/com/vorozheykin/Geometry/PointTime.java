@@ -2,7 +2,7 @@ package com.vorozheykin.Geometry;
 
 import com.vorozheykin.Time.Time;
 
-public class PointTime extends Point {
+public class PointTime extends Point<Integer> {
     private Time time;
 
     public PointTime(int x, Time time){

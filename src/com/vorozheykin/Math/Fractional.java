@@ -2,14 +2,14 @@ package com.vorozheykin.Math;
 
 import java.util.Objects;
 
-public final class Fractional extends Number implements Cloneable{
+public final class Fractional extends Number implements Cloneable, Comparable<Fractional> {
     int numerator;
     int denumerator;
 
     public Fractional(int numerator, int denumerator) {
-        if(denumerator == 0){
-            throw new IllegalArgumentException("Denomerator mustn't be zero");
-        }
+//        if(denumerator == 0){
+//            throw new IllegalArgumentException("Denomerator mustn't be zero");
+//        }
         this.numerator = numerator;
         this.denumerator = denumerator;
     }
@@ -91,24 +91,27 @@ public final class Fractional extends Number implements Cloneable{
         return numerator + "/" + denumerator;
     }
 
-    @Override
-    public int intValue() {
+    public int intValue() throws FractionalException{
+        if(denumerator == 0){
+            throw new FractionalException("Данный вид дроби не предназначен для представления в целочисленном виде", new ArithmeticException());
+        }
         return numerator / denumerator;
+
     }
 
     @Override
     public long longValue() {
-        return numerator / denumerator;
+        return intValue();
     }
 
     @Override
     public float floatValue() {
-        return (float) numerator / (float) denumerator;
+        return intValue();
     }
 
     @Override
     public double doubleValue() {
-        return (double) numerator / (float) denumerator;
+        return intValue();
     }
 
     @Override
@@ -129,5 +132,12 @@ public final class Fractional extends Number implements Cloneable{
     @Override
     public Fractional clone() throws CloneNotSupportedException {
         return (Fractional) super.clone();
+    }
+
+    @Override
+    public int compareTo(Fractional o) {
+        if(o.intValue() > this.intValue()) return -1;
+        if(o.intValue() < this.intValue()) return 1;
+        else return 0;
     }
 }

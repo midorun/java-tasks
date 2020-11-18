@@ -1,70 +1,70 @@
 package com.vorozheykin.Geometry;
 
+import com.vorozheykin.Main.MyClone;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Point implements Cloneable {
-    private List<Integer> coordinates = new ArrayList<>();
+public class Point<T extends Number> implements MyClone {
+    private List<T> coordinates = new ArrayList<>();
 
-    public Point(int x) {
-        coordinates.add(x);
+    public Point (T x) {
+        coordinates.add((T) x);
     }
 
-    public Point(int x, int y){
+    public Point(T x, T y){
         this(x);
-        coordinates.add(y);
+        coordinates.add((T) y);
     }
 
-    public Point(int x, int y, int z) {
+    public Point(T x, T y, T z) {
         this(x, y);
-        coordinates.add(z);
+        coordinates.add((T) z);
     }
 
-    public int getX() {
-        return coordinates.get(0);
-    }
-
-    public Point setX(int x) {
-      coordinates.add(0, x);
+    public Point<T> setX(T x) {
+      coordinates.add(0, (T) x);
       return this;
     }
 
-    public int getY() {
-        if (coordinates.size() < 2) throw new IllegalArgumentException("Can't get Y-coord for X point => " + this);
+    public Point<T> setY(T y) {
+        coordinates.add(1,(T) y);
+        return this;
+    }
+
+    public Point<T> setZ(T z) {
+        coordinates.add(2,(T) z);
+        return this;
+    }
+
+    T getX(){
+        return coordinates.get(0);
+    }
+
+    T getY(){
         return coordinates.get(1);
     }
 
-    public Point setY(int y) {
-        coordinates.add(1,y);
-        return this;
-    }
-
-    public int getZ() {
-        if (coordinates.size() < 3) throw new IllegalArgumentException("Can't get Z-coord for 2D point => " + this);
+    T getZ(){
         return coordinates.get(2);
     }
 
-    public Point setZ(int z) {
-        coordinates.add(2,z);
-        return this;
-    }
-
-    public List<Integer> getCoordinates() {
+    public List<T> getCoordinates() {
         return coordinates;
     }
 
     @Override
-    public Point clone() throws CloneNotSupportedException{
-        Point clone = (Point) super.clone();
+    public Point<T> clone() throws CloneNotSupportedException{
+        Point<T> clone = (Point<T>) super.clone();
         clone.coordinates = new ArrayList<>(this.coordinates);
         return clone;
     }
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (o.equals(this)) return true;
         Point point = (Point) o;
         return Objects.equals(coordinates, point.coordinates);
     }

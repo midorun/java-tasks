@@ -4,19 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Triangle implements Figure, PolygonalChainable {
-    private List<Point> points = new ArrayList<>(3);
+    private List<Point<Double>> points = new ArrayList<>(3);
     private List<Double> sides = new ArrayList<>(3);
 
-    public Triangle(Point first, Point second, Point third) {
+    public Triangle(Point<Double> first, Point<Double> second, Point<Double> third) {
         setPoints(first, second, third);
         setSides();
     }
 
-    public List<Point> getPoints(){
+    public List<Point<Double>> getPoints(){
         return points;
     }
 
-    public Triangle setPoints(Point first, Point second, Point third){
+    public Triangle setPoints(Point<Double> first, Point<Double> second, Point<Double> third){
         if(checkForXPoints(first, second, third)) throw new IllegalArgumentException("Triangle can't be defined by X points");
         points.add(0, first);
         points.add(1, second);
@@ -33,13 +33,13 @@ public class Triangle implements Figure, PolygonalChainable {
         return this;
     }
 
-    private boolean checkForXPoints(Point first, Point second, Point third){
+    private boolean checkForXPoints(Point<Double> first, Point<Double> second, Point<Double> third){
         return (first.getCoordinates().size() < 2 || second.getCoordinates().size() < 2 || third.getCoordinates().size() < 2);
     }
 
-    public double lengthOfSide(Point start, Point end) {
-            int x = start.getX() - end.getX();
-            int y = start.getY() - end.getY();
+    public double lengthOfSide(Point<Double> start, Point<Double> end) {
+            double x = start.getX() - end.getX();
+            double y = start.getY() - end.getY();
             return Math.sqrt(x * x + y * y);
     }
 

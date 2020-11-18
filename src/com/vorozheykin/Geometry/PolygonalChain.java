@@ -5,48 +5,50 @@ import java.util.List;
 import java.util.Objects;
 
 public class PolygonalChain implements Lengthable {
-    private List <Point> points = new ArrayList<>();
+    private List <Point<Double>> points = new ArrayList<>();
 
-    public PolygonalChain(Point...points){
-        for(Point p : points){
+    @SafeVarargs
+    public PolygonalChain(Point<Double>...points){
+        for(Point<Double> p : points){
             if(p.getCoordinates().size() < 2) throw new IllegalArgumentException("PolygonalChain can't be defined by X points");
-            this.points.add(new Point(p.getX(), p.getY()));
+            this.points.add(new Point<>(p.getX(), p.getY()));
         }
     }
 
-    public PolygonalChain(List<Point> points) {
-        for (Point p: points) {
+    public PolygonalChain(List<Point<Double>> points) {
+        for (Point<Double> p: points) {
             if(p.getCoordinates().size() < 2) throw new IllegalArgumentException("PolygonalChain can't be defined by X points");
-            this.points.add(new Point(p.getX(), p.getY()));
+            this.points.add(new Point<>(p.getX(), p.getY()));
         }
     }
 
-    public PolygonalChain addPoints(Point... points){
-        for(Point p: points){
+    @SafeVarargs
+    public final PolygonalChain addPoints(Point<Double>... points){
+        for(Point<Double> p: points){
             if(p.getCoordinates().size() < 2) throw new IllegalArgumentException("PolygonalChain can't be defined by X points");
-            this.points.add(new Point(p.getX(), p.getY()));
+            this.points.add(new Point<>(p.getX(), p.getY()));
         }
 
         return this;
     }
 
-    public PolygonalChain addPoints(List<Point> points){
-        for(Point p: points){
+    public PolygonalChain addPoints(List<Point<Double>> points){
+        for(Point<Double> p: points){
             if(p.getCoordinates().size() < 2) throw new IllegalArgumentException("PolygonalChain can't be defined by X points");
-            this.points.add(new Point(p.getX(), p.getY()));
+            this.points.add(new Point<>(p.getX(), p.getY()));
         }
         return this;
     }
 
-    public List<Point> getPoints() {
+    public List<Point<Double>> getPoints() {
         return points;
     }
 
     public double length(){
         double result = 0;
         for(int i = 0; i < points.size()-1; i++){
-            int x = points.get(i).getX() - points.get(i+1).getX();
-            int y = points.get(i).getY() - points.get(i+1).getY();
+            double x = points.get(i).getX() - points.get(i+1).getX();
+            double y = points.get(i).getY() - points.get(i+1).getY();
             result += Math.sqrt(x * x + y * y);
         }
         return result;

@@ -1,35 +1,43 @@
 package com.vorozheykin.Main;
 
 
-import com.vorozheykin.Media.MultiComment;
+import com.vorozheykin.Student.MarkCheckable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args){
+        MarkCheckable<String> markRule = new MarkCheckable<>() {
+            @Override
+            public boolean check(String mark) {
+                return "зачет".equals(mark) || "незачет".equals(mark);
+            }
+        };
 
-        List<MultiComment> b = new ArrayList<>();
-        b.add(new MultiComment(0, "fsdfsdf"));
-        b.add(new MultiComment(1, "fsdfsdf"));
-        b.add(new MultiComment(2, "fsdfsdf"));
-        b.add(new MultiComment(3, "fsdfsdf"));
+        Action<String, Integer> convertRule = new Action<>() {
+                @Override
+                public Integer action(String source) {
+                    return source.length();
+                }
 
-        MultiComment a = new MultiComment(0,"innerContent",
-                new MultiComment(1, "firstCont"),
-                new MultiComment(2, "secondCont"),
-                new MultiComment(1, "firstCont"),
-                new MultiComment(2, "secondCont"),
-                new MultiComment(1, "firstCont"),
-                new MultiComment(2, "secondCont"),
-                new MultiComment(1, "firstCont"),
-                new MultiComment(2, "secondCont")
-        );
-        MultiComment c = new MultiComment(1,"gdfgdfg", b);
+        };
 
 
-        System.out.println(a.toString(3));
-        System.out.println("a".repeat(3));
+        List<String> strings = new ArrayList<>();
+        strings.add("a");
+        strings.add("aa");
+        strings.add("aaa");
+
+        System.out.println(Main.convert(strings, convertRule));
+    }
+
+    public static <S, D> List<D> convert(List<S> list, Action<S, D> action){
+        List<D> result = new ArrayList<>();
+        for (S obj: list){
+            result.add(action.action((obj)));
+        }
+        return result;
     }
 }

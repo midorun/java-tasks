@@ -4,7 +4,7 @@ import java.util.List;
 
 public interface PolygonalChainable {
 
-    List<Point> getPoints();
+    List<Point<Double>> getPoints();
 
     default PolygonalChain getPolygonalChain() {
         PolygonalChain polygonalChain = new PolygonalChain();

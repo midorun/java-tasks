@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Quadrangle implements Figure, PolygonalChainable {
-    private Point start;
+    private Point<Double> start;
     private int side;
 
-    public Quadrangle(Point start, int side) {
+    public Quadrangle(Point<Double> start, int side) {
         if(side <= 0) throw new IllegalArgumentException("The length of the quadrangle side can't be less than 1");
         this.start = start;
         this.side = side;
@@ -17,22 +17,22 @@ public class Quadrangle implements Figure, PolygonalChainable {
         return new ClosedLine(getPoints());
     }
 
-    public List<Point> getPoints(){
-        List<Point> points = new ArrayList<>();
+    public List<Point<Double>> getPoints(){
+        List<Point<Double>> points = new ArrayList<>();
 
-        points.add(new Point(start.getX(), start.getY()));
-        points.add(new Point((start.getX() + side), start.getY()));
-        points.add(new Point((start.getX() + side), (start.getY() - side)));
-        points.add(new Point(start.getX(), (start.getY() - side)));
+        points.add(new Point<>(start.getX(), start.getY()));
+        points.add(new Point<>((start.getX() + side), start.getY()));
+        points.add(new Point<>((start.getX() + side), (start.getY() - side)));
+        points.add(new Point<>(start.getX(), (start.getY() - side)));
 
         return points;
     }
 
-    public Point getStart() {
+    public Point<Double> getStart() {
         return start;
     }
 
-    public Quadrangle setStart(Point start) {
+    public Quadrangle setStart(Point<Double> start) {
         this.start = start;
         return this;
     }

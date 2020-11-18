@@ -1,35 +1,37 @@
 package com.vorozheykin.Geometry;
 
 
+import com.vorozheykin.Main.MyClone;
+
 import java.util.Objects;
 
-public class Line implements Lengthable, Cloneable {
-    private Point start;
-    private Point end;
+public class Line implements Lengthable, MyClone {
+    private Point<Double> start;
+    private Point<Double> end;
 
-    public Line(Point start, Point end) {
-       this.start = new Point(start.getX(), start.getY());
-       this.end = new Point(end.getX(), end.getY());
+    public Line(Point<Double> start, Point<Double> end) {
+       this.start = new Point<>(start.getX(), start.getY());
+       this.end = new Point<>(end.getX(), end.getY());
     }
 
-    public Line(int x1, int y1, int x2, int y2) {
-        this(new Point(x1, y1), new Point(x2, y2));
+    public Line(double x1, double y1, double x2, double y2) {
+        this(new Point<Double>(x1, y1), new Point<Double>(x2, y2));
     }
 
-    public Point getStart() {
+    public Point<Double> getStart() {
         return start;
     }
 
-    public void setStart(Point start) {
-        this.start = new Point(start.getX(), start.getY());
+    public void setStart(Point<Double> start) {
+        this.start = new Point<>(start.getX(), start.getY());
     }
 
-    public Point getEnd() {
+    public Point<Double> getEnd() {
         return end;
     }
 
-    public void setEnd(Point end) {
-        this.end = new Point(end.getX(), end.getY());
+    public void setEnd(Point<Double> end) {
+        this.end = new Point<>(end.getX(), end.getY());
     }
 
     @Override
