@@ -5,7 +5,7 @@ import com.vorozheykin.Main.MyClone;
 
 import java.util.Objects;
 
-public class Line implements Lengthable, MyClone {
+public class Line implements Lengthable, MyClone, Moveable {
     private Point<Double> start;
     private Point<Double> end;
 
@@ -32,6 +32,15 @@ public class Line implements Lengthable, MyClone {
 
     public void setEnd(Point<Double> end) {
         this.end = new Point<>(end.getX(), end.getY());
+    }
+
+    @Override
+    public void move(int x, int y){
+        start.setX(start.getX() + x);
+        start.setY(start.getY() + y);
+
+        end.setX(end.getX() + x);
+        end.setY(end.getY() + y);
     }
 
     @Override

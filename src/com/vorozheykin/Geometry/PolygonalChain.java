@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class PolygonalChain implements Lengthable {
+public class PolygonalChain implements Lengthable, Moveable {
     private List <Point<Double>> points = new ArrayList<>();
 
     @SafeVarargs
@@ -52,6 +52,14 @@ public class PolygonalChain implements Lengthable {
             result += Math.sqrt(x * x + y * y);
         }
         return result;
+    }
+
+    @Override
+    public void move(int x, int y){
+        for(Point<Double> p: points){
+            p.setX(p.getX() + x);
+            p.setY(p.getY() + y);
+        }
     }
 
     @Override

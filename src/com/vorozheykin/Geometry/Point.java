@@ -24,17 +24,17 @@ public class Point<T extends Number> implements MyClone {
     }
 
     public Point<T> setX(T x) {
-      coordinates.add(0, (T) x);
+      coordinates.set(0, (T) x);
       return this;
     }
 
     public Point<T> setY(T y) {
-        coordinates.add(1,(T) y);
+        coordinates.set(1,(T) y);
         return this;
     }
 
     public Point<T> setZ(T z) {
-        coordinates.add(2,(T) z);
+        coordinates.set(2,(T) z);
         return this;
     }
 

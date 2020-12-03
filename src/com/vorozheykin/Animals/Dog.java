@@ -1,9 +1,9 @@
 package com.vorozheykin.Animals;
 
-public class Cat implements Meowable{
+public class Dog implements Barkable{
     private String name;
 
-    public Cat(String name) {
+    public Dog(String name) {
         this.name = name;
     }
 
@@ -17,19 +17,19 @@ public class Cat implements Meowable{
 
     @Override
     public String toString() {
-        return "cat: " + name;
+        return "dog: " + name;
     }
 
     @Override
-    public void meow() {
-        System.out.println(name + ": мяу!");
+    public void bark() {
+        System.out.println(name + ": bark!");
     }
 
     public void meow(int n) {
         System.out.print(name + ": ");
         for(int i = 0; i < n; i++){
-            if(i == 0) System.out.print("мяу");
-            else System.out.print("-мяу");
+            if(i == 0) System.out.print("bark");
+            else System.out.print("-bark");
         }
         System.out.println("!");
     }

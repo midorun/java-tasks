@@ -1,43 +1,24 @@
 package com.vorozheykin.Main;
 
 
-import com.vorozheykin.Student.MarkCheckable;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.vorozheykin.Karate.*;
 
 public class Main {
 
     public static void main(String[] args){
-        MarkCheckable<String> markRule = new MarkCheckable<>() {
-            @Override
-            public boolean check(String mark) {
-                return "зачет".equals(mark) || "незачет".equals(mark);
-            }
-        };
+        HandPunchable handPunch = () -> System.out.println("hand punch");
+        Kickable kick = () -> System.out.println("kick");
+        JumpKickable jumpKick = () -> System.out.println("jump kick");
 
-        Action<String, Integer> convertRule = new Action<>() {
-                @Override
-                public Integer action(String source) {
-                    return source.length();
-                }
+        KarateBoy karateBoy = new KarateBoy("danil");
 
-        };
+        Combo one = new Combo("InfinityPunch" ,handPunch, handPunch, handPunch);
+        Combo two = new Combo("AllInOne" ,handPunch, kick, jumpKick);
+
+        karateBoy.makeCombo(one).makeCombo(two);
 
 
-        List<String> strings = new ArrayList<>();
-        strings.add("a");
-        strings.add("aa");
-        strings.add("aaa");
 
-        System.out.println(Main.convert(strings, convertRule));
     }
 
-    public static <S, D> List<D> convert(List<S> list, Action<S, D> action){
-        List<D> result = new ArrayList<>();
-        for (S obj: list){
-            result.add(action.action((obj)));
-        }
-        return result;
-    }
 }
