@@ -1,23 +1,25 @@
 package com.vorozheykin.Main;
 
 
-import com.vorozheykin.Karate.*;
+import com.vorozheykin.Patterns.MementoCommand.Student;
 
 public class Main {
 
     public static void main(String[] args){
-        HandPunchable handPunch = () -> System.out.println("hand punch");
-        Kickable kick = () -> System.out.println("kick");
-        JumpKickable jumpKick = () -> System.out.println("jump kick");
 
-        KarateBoy karateBoy = new KarateBoy("danil");
+        Student student = new Student("Mark",  5,4,3);
+        student.save();
 
-        Combo one = new Combo("InfinityPunch" ,handPunch, handPunch, handPunch);
-        Combo two = new Combo("AllInOne" ,handPunch, kick, jumpKick);
+        student.setName("John");
+        student.changeMark(2,5);
+        student.changeMark(2,5);
+        student.changeMark(2,5);
+        System.out.println(student);
 
-        karateBoy.makeCombo(one).makeCombo(two);
+        student.undo();
+        student.undo();
 
-
+        System.out.println(student);
 
     }
 

@@ -1,4 +1,4 @@
-package com.vorozheykin.Karate;
+package com.vorozheykin.Patterns.Singletone;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,18 +35,20 @@ public class KarateBoy{
         return this;
     }
 
-    public KarateBoy makeCombo(Combo combo){  /* return this под вопросом, стоит ли вообще так делать */
-        System.out.println("KarateBoy: " + name + ", is making combo - " + combo.getTitle() + ": ");
-        for(Skill skill: combo.getSkills()){
-            skill.skillSound();
-        }
-        return this;
-    }
+   public void kick(){
+       System.out.println("kick");
+   }
+
+   public void hit(){
+       System.out.println("hit");
+   }
+
+   public void jumpKick(){
+       System.out.println("jumpKick");
+   }
 
     @Override
     public String toString(){
         return name;
     }
-
-
 }
